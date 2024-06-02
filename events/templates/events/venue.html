@@ -1,0 +1,30 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+  <h1>Venues</h1>
+  <br/>
+  <table class="table table-hover table-bordered table-striped">
+    <thead>
+     
+    </thead>
+    <tbody>
+      {% for venue in venue_list %}
+      <tr>
+        <td>
+          <a href="{% url 'show_venue' venue.id %}">
+            {{ venue.name }}
+          </a>
+        </td>
+        <td class="text-right align-middle">
+          <a href="{% url 'update-venue' venue.id %}" class="btn btn-outline-primary btn-sm mr-2">
+            Update
+          </a>
+          <a href="{% url 'delete-venue' venue.id %}" class="btn btn-outline-danger btn-sm">
+            Delete
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
