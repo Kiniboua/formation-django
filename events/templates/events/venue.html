@@ -28,25 +28,35 @@
     </tbody>
   </table>
   <br/><br/>
-  {{ venues }}<br/>
-  Has Previous : {{ venues.has_previous }}<br/>
+
+  <!--{{ venues }}<br/>
+ Has Previous : {{ venues.has_previous }}<br/>
   Has Next : {{ venues.has_next }}<br/>
   Current Page : {{ venues.number }}<br/>
   Number Of Page: {{ venues.paginator.num_pages }}<br/>
   <hr><br/><br/>
-  
-  {% if venues.has_previous %}
-    <a href="?page=1">&laquo; first</a>
-    <a href="?page={{ venues.previous_page_number }}">previous</a>
-  {% endif %}
-  
-  {% if venues.has_next %}
-    <a href="?page={{ venues.next_page_number }}">next</a>
-    <a href="?page={{ venues.paginator.num_pages }}">last &raquo;</a>
-  {% endif %}
+  -->
 
-  {% if venues.has_next %}
-    <a href="?page={{ venues.next_page_number }}">next</a>
-    <a href="?page={{ venues.paginator.num_pages }}">last &raquo;</a>
-  {% endif %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <!-- Footer pagination -->
+        {% if venues.has_previous %}
+        <li class="page-item ">
+            <a class="page-link" href="?page=1">&laquo; first</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page={{ venues.previous_page_number }}">previous</a>
+        </li>
+        {% endif %}
+
+        {% if venues.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ venues.next_page_number }}">next</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page={{ venues.paginator.num_pages }}">last &raquo;</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
 {% endblock %}
