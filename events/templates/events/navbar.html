@@ -7,40 +7,52 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href= {% url "home" "2024" "March"%} >March</a>
+            <a class="nav-link active" aria-current="page" href= {% url "home" "2024" "March"%} >Calendar</a>
+          </li>
+          <!-- dropdown Of Events Add  Event section  -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Events
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" aria-current="page" href= {% url "list-events"%} > All Events</a></li>
+              <li><a class="dropdown-item" aria-current="page" href= {% url "add_event"%} >Add Event</a></li>
+            </ul>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href= {% url "list-events"%} >Events</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href= {% url "add_event"%} >Add Event</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href= {% url "add_venue"%} >Add Venue </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href= {% url "list_venues"%} >Venue </a>
+          <!-- dropdown Of Venue Add  Venue section  -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Venues
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" aria-current="page" href= {% url "list_venues"%} > All Venues</a></li>
+              <li><a class="dropdown-item" aria-current="page" href= {% url "add_venue"%} >Add Venue</a></li>
+              
+            </ul>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href={% url "venue_text"%}  >Venue Text File  </a>
+        
+          
+      <!-- dropdown section  -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Download
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" aria-current="page" href={% url "venue_text"%}  >Venue Text File</a></li>
+              <li><a class="dropdown-item" aria-current="page" href={% url "venue_csv"%}  >Venue CSV File </a></li>
+              <li> <a class="dropdown-item" aria-current="page" href={% url "venue_pdf"%}  >Venue PDF File  </a></li>
+            </ul>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href={% url "venue_csv"%}  >Venue CSV File  </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href={% url "venue_pdf"%}  >Venue PDF File  </a>
-          </li>
+          
          
           <!--check if user is logged in -->
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href={% url "logout"%}  >Logout </a>
+              <a class="nav-link active" aria-current="page" href={% url "logout"%}  >logout </a>
             </li>
           {% else %}
             <li class="nav-item">
