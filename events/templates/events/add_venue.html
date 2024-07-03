@@ -1,6 +1,7 @@
 {% extends 'events/base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <div class="container mt-5">
     <center>
         <h1>Add Venue </h1>
@@ -19,5 +20,11 @@
         {% endif %}
     </center>
 </div>
+<!--- Lock Down Your Django App in Add_Venue-->
+{% else %}
+    <h1> Sorry You Must Be Logged in to View This 
+    Page...</h1>
+    <a href="{% url 'login' %}">Login Here</a>
+{% endif %}
 {% endblock %}
 

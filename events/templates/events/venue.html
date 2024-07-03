@@ -15,6 +15,8 @@
             {{ venue.name }}
           </a>
         </td>
+        <!--- Lock Down Your Django App in Venue-->
+        {% if user.is_authenticated %}
         <td class="text-right align-middle">
           <a href="{% url 'update-venue' venue.id %}" class="btn btn-outline-primary btn-sm mr-2">
             Update
@@ -23,6 +25,7 @@
             Delete
           </a>
         </td>
+        {% endif %}
       </tr>
       {% endfor %}
     </tbody>

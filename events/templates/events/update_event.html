@@ -1,6 +1,7 @@
 {% extends 'events/base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
   <center>
     <h1>Update Event</h1>
     <br/>
@@ -13,4 +14,9 @@
     </form>
 
   </center>
+  {% else %}
+      <h1> Sorry You Must Be Logged in to View This 
+      Page...</h1>
+      <a href="{% url 'login' %}">Login Here</a>
+  {% endif %}
 {% endblock %}

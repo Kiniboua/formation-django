@@ -2,6 +2,7 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
 <h1>Add Event.</h1>
 <br/><br/>
 <div class="container mt-5">
@@ -21,6 +22,12 @@
 </div>
 <br/><br/>
 
+<!--- Lock Down Your Django App in Add_Event-->
+{% else %}
+<h1> Sorry You Must Be Logged in to View This 
+Page...</h1>
+<a href="{% url 'login' %}">Login Here</a>
+{% endif %}
 {% endblock %}
 
 

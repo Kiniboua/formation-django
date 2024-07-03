@@ -27,6 +27,8 @@
                         </ul>
                         
                     </div>
+                    <!--- Lock Down Your Django App in Events_List -->
+                    {% if user.is_authenticated %}
                     <div class="card-footer text-muted"> 
                         <a href="{% url 'update-event' event.id %}" class="btn btn-outline-primary btn-sm">
                         Update Event
@@ -36,6 +38,7 @@
                             Delete Event
                         </a>
                     </div>
+                    {% endif %}
                 </div>
             </li>
             <br/><br/>
