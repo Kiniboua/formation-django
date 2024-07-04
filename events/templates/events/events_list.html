@@ -29,15 +29,17 @@
                     </div>
                     <!--- Lock Down Your Django App in Events_List -->
                     {% if user.is_authenticated %}
-                    <div class="card-footer text-muted"> 
-                        <a href="{% url 'update-event' event.id %}" class="btn btn-outline-primary btn-sm">
-                        Update Event
-                        </a>
+                       {% if user == event.manager %}
+                            <div class="card-footer text-muted"> 
+                                <a href="{% url 'update-event' event.id %}" class="btn btn-outline-primary btn-sm">
+                                Update Event
+                                </a>
 
-                        <a href="{% url 'delete-event' event.id %}" class="btn btn-outline-danger btn-sm">
-                            Delete Event
-                        </a>
-                    </div>
+                                <a href="{% url 'delete-event' event.id %}" class="btn btn-outline-danger btn-sm">
+                                    Delete Event
+                                </a>
+                            </div>
+                            {% endif %}
                     {% endif %}
                 </div>
             </li>
