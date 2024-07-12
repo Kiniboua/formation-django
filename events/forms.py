@@ -3,8 +3,8 @@ from django.forms import ModelForm
 from .models import Venue, Events
 
 
-
-class EventsForm (ModelForm):
+# Admin SuperUser Event Form
+class EventsFormAdmin (ModelForm):
     class Meta:
         model = Events
         fields = ('name', 'event_date', 'venue', 'manager', 'attendees', 'descriptions')
@@ -22,6 +22,28 @@ class EventsForm (ModelForm):
             'event_date': 'YYY-MM-DD ',
             'venue': 'venue',
             'manager': 'manager',
+            'attendees': 'attendees',
+            'descriptions': 'descriptions',
+        }
+
+
+# User Event Form
+class EventsForm (ModelForm):
+    class Meta:
+        model = Events
+        fields = ('name', 'event_date', 'venue',  'attendees', 'descriptions')
+       
+        widgets = {
+              'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Events name'}),
+              'event_date':  forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Event Date'}),
+              'venue': forms.Select(attrs={'class':'form-select', 'placeholder':'Venue'}),
+              'attendees': forms.SelectMultiple(attrs={'class':'form-control', 'placeholder':'Attendees'}),
+              'descriptions': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Descriptions'}),
+        }
+        labels = {
+            'name': 'Event Name',
+            'event_date': 'YYY-MM-DD ',
+            'venue': 'venue',
             'attendees': 'attendees',
             'descriptions': 'descriptions',
         }
