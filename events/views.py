@@ -7,6 +7,7 @@ from .models import Events, Venue
 from .forms import VenueForm, EventsForm, EventsFormAdmin
 from django.http import HttpResponse
 import csv
+from django.contrib import messages
 # Import PDF Staff
 from django.http import FileResponse
 import io
@@ -116,8 +117,13 @@ def delete_venue(request, venue_id):
 def delete_event(request, event_id):
     try:
         event = Events.objects.get(pk=event_id)
-        event.delete()
-        return redirect('list-events')
+        if request.user == event.manager:
+             event.delete()
+             messages.success(request, ("Event Delted!!"))
+             return redirect('list-events')
+        else :
+            messages.success(request, ("Your Are Not Authorized To Delete This Event!!"))
+            return redirect('list-events')
     except Events.DoesNotExist:
         raise Http404("Event does not exist")
 
